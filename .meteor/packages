@@ -7,3 +7,7 @@
 meteor-platform
 insecure
 bevanhunt:leaflet
+bootstrap
+jquery
+peppelg:bootstrap-3-modal
+reactive-var

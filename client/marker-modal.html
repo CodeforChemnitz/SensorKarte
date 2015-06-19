@@ -1,0 +1,22 @@
+<template name="markerModal">
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">{{#if update}}Sensor ändern{{else}}Neuer Sensor{{/if}}</h4>
+                </div>
+                <div class="modal-body">
+                    Titel: <input type="text" value="{{title}}" id="marker-title"><br/>
+                    Typ: <select>{{#each types}}<option>{{_id}}</option>{{/each}}</select><br/>
+                    Position: {{lat}} / {{lng}}
+                </div>
+                <div class="modal-footer">
+                    {{#if update}}<button type="button" class="btn btn-danger js-delete">Löschen</button>{{/if}}
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+                    <button type="button" class="btn btn-primary js-save">Speichern</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</template>
