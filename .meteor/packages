@@ -11,3 +11,5 @@ bootstrap
 jquery
 peppelg:bootstrap-3-modal
 reactive-var
+geolocation
+appshore:leaflet-awesome-markers

@@ -1,14 +1,46 @@
 
+Template.map.helpers({
+   yourloc: function() {
+       var geo = Geolocation.latLng();
+       if (geo) {
+           return geo.lat + ' / ' + geo.lng;
+       } else {
+           return ".. suche ..";
+       }
+   }
+});
+
 Template.map.rendered = function () {
     L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images';
 
     var map = L.map('map', {
         doubleClickZoom: false
-    }).setView([50.8323, 12.9282], 13);
-    // TODO detect from device!
+    });
+    // Stamen.Watercolor | Thunderforest.Outdoors
+    // more providers: http://leaflet-extras.github.io/leaflet-providers/preview/
+    L.tileLayer.provider('OpenStreetMap.DE').addTo(map);
 
-    L.tileLayer.provider('Thunderforest.Outdoors').addTo(map);
 
+    var yourloc;
+    Tracker.autorun(function(c) {
+        var curr = Geolocation.latLng();
+        console.log("geoloc", curr);
+        if (c.firstRun) {
+            if (!curr) {
+                curr = { lat: 50.8323, lng: 12.9282 };
+            }
+            var icon = L.AwesomeMarkers.icon({
+                icon: 'coffee',
+                markerColor: 'red'
+            });
+            console.log("icon", icon);
+            yourloc = L.marker(curr, { icon: icon});
+        } else if (curr) {
+            yourloc.lat = curr.lat;
+            yourloc.lng = curr.lng;
+            map.setView([curr.lat, curr.lng], 13);
+        }
+    });
 
     map.on('dblclick', function (event) {
         title.set('');
@@ -24,14 +56,19 @@ Template.map.rendered = function () {
                 .addTo(map)
                 // Klick = entfernen
                 .on('click', function (event) {
-                    console.log(document);
+                    console.log("marker-daten aus mongo", document);
                     id.set(document._id);
                     latlng.set(document.latlng);
                     title.set(document.title || '');
+                    type.set(document.type || '');
                     //map.removeLayer(marker);
                     //Markers.remove({_id: document._id});
                     Modal.show('markerModal');
                 });
+            //console.log("der neue marker", marker);
+        },
+        changed: function (oldDocument, newDocument) {
+            console.warn("TODO marker onclick finden und ReactVars aktualisieren", oldDocument, newDocument);
         },
         removed: function (oldDocument) {
             layers = map._layers;

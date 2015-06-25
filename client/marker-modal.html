@@ -7,9 +7,7 @@
                     <h4 class="modal-title">{{#if update}}Sensor ändern{{else}}Neuer Sensor{{/if}}</h4>
                 </div>
                 <div class="modal-body">
-                    Titel: <input type="text" value="{{title}}" id="marker-title"><br/>
-                    Typ: <select>{{#each types}}<option>{{_id}}</option>{{/each}}</select><br/>
-                    Position: {{lat}} / {{lng}}
+                    {{> markerModalForm}}
                 </div>
                 <div class="modal-footer">
                     {{#if update}}<button type="button" class="btn btn-danger js-delete">Löschen</button>{{/if}}
@@ -19,4 +17,24 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+</template>
+
+<template name="markerModalForm">
+    <div class="form-group">
+        <label for="marker-title">Titel</label>
+        <input type="text" value="{{title}}" name="marker-title" id="marker-title" class="form-control" placeholder="individuelle Bezeichnung">
+    </div>
+    <div class="form-group">
+        <label for="marker-type">Typ*</label>
+        <select id="marker-type">
+            <option value=""></option>
+            {{#each types}}
+            <option value="{{_id}}">{{name}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="marker-title">Position</label>
+        <p class="form-control-static">{{lat}} / {{lng}}</p>
+    </div>
 </template>

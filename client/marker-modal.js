@@ -1,5 +1,13 @@
 
 Template.markerModal.helpers({
+    update: function() {
+        var _id = id.get();
+        console.log(_id);
+        return _id ? true : false;
+    }
+});
+
+Template.markerModalForm.helpers({
     lat: function() {
         return latlng.get().lat;
     },
@@ -9,13 +17,15 @@ Template.markerModal.helpers({
     title: function() {
         return title.get();
     },
-    update: function() {
-        var _id = id.get();
-        console.log(_id);
-        return _id ? true : false;
+    type: function() {
+        return type.get();
     },
     types: function() {
-        return Sensortypes.find();
+        var types = Sensortypes.find().fetch();
+        var currtype = type.get();
+        _.each(types, function(n) { n.selected = n._id == currtype; });
+        console.log("types", types);
+        return types;
     }
 });
 
@@ -23,10 +33,13 @@ Template.markerModal.helpers({
 Template.markerModal.events({
     'click .js-save': function() {
         var title = $('#marker-title').val();
+        var type = $('#marker-type').find('option:selected').val();
         if (id.get()) {
-            Markers.update(id.get(), {$set: { latlng: latlng.get(), title: title}});
+            console.log("update", id.get(), "title", title, "type", type);
+            Markers.update(id.get(), {$set: { title: title, type: type}});
         } else {
-            Markers.insert({latlng: latlng.get(), title: title});
+            console.log("insert", latlng.get(), "title", title, "type", type);
+            Markers.insert({latlng: latlng.get(), title: title, type: type});
         }
         Modal.hide();
     },
