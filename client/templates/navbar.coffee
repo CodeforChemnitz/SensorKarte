@@ -6,12 +6,11 @@ Template.navbar.helpers
 
 
 Template.navbar.events
-    'click input[name="filter_name"]': (e) ->
+    'keyup form .filter-name': (e) ->
         filter_name = $(e.target).val()
-        console.log "suche nach ", filter_name
+        if filter_name.length > 3
+            console.log "suche nach ", filter_name
 
-    'change select[filter_type]': (e) ->
+    'change form .filter-type': (e) ->
         filter_type = $(e.target).find('option:selected').val()
-        console.log "typen ", filter_type
-
-        
+        console.log "suche nach typ ", filter_type

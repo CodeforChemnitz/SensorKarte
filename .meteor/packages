@@ -16,3 +16,4 @@ appshore:leaflet-awesome-markers
 coffeescript
 iron:router
 accounts-password
+accounts-ui

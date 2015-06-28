@@ -12,23 +12,17 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Karte</a></li>
-            <li><a href="#">Liste</a></li>
+            <li><a href="{{pathFor 'map'}}">Karte</a></li>
+            <li><a href="{{pathFor 'list'}}">Liste</a></li>
           </ul>
           <div class="navbar-right">
-            {{#if currentUser}}
-                {{emailLocalPart}}
-                    <a class="js-logout btn-secondary">Logout</a>
-                {{/if}}
-            {{else}}
-                <a href="{{pathFor 'signin'}}" class="btn-secondary">Sign In</a>
-                <a href="{{pathFor 'join'}}" class="btn-secondary">Join</a>
-            {{/if}}
-          <form class="navbar-form navbar-right">
-            <input name="filter_name" type="text" class="form-control" placeholder="Suchen...">
-            <select name="filter_type" class="form-control">
+            {{> loginButtons}}
+          </div>
+          <form class="navbar-form navbar-right search">
+            <input type="text" class="form-control filter-name" placeholder="Suchen...">
+            <select class="form-control filter-type">
                 {{#each types}}
-                    <option value="{{this}}">{{this.name}}</option>
+                    <option value="{{_id}}">{{name}}</option>
                 {{/each}}
             </select>
           </form>

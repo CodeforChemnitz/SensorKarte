@@ -1,5 +1,5 @@
 
-Template.map.helpers
+Template.appMap.helpers
    yourloc: () ->
        geo = Geolocation.latLng();
        if geo
@@ -8,7 +8,7 @@ Template.map.helpers
            return ".. suche .."
 
 
-Template.map.rendered = () ->
+Template.appMap.rendered = () ->
     L.Icon.Default.imagePath = 'packages/bevanhunt_leaflet/images'
 
     map = L.map 'map', {
