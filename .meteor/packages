@@ -17,3 +17,4 @@ coffeescript
 iron:router
 accounts-password
 accounts-ui
+less
