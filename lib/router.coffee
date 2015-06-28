@@ -28,20 +28,18 @@ Router.map () ->
     this.route 'join'
     this.route 'signin'
 
-    this.route 'listsShow',
-        path: '/lists/:_id',
+    this.route 'map',
+        path: '/map',
         # subscribe to todos before the page is rendered but don't wait on the
         # subscription, we'll just render the items as they arrive
         onBeforeAction: () ->
-            this.todosHandle = Meteor.subscribe 'todos', this.params._id
-
             if this.ready()
                 # Handle for launch screen defined in app-body.js
                 dataReadyHold.release();
 
-        data: () -> Lists.findOne this.params._id
+        #data: () -> Lists.findOne this.params._id
         action: () -> this.render()
 
     this.route 'home',
         path: '/',
-        action: () -> Router.go 'listsShow', Lists.findOne()
+        action: () -> Router.go 'map', Lists.findOne()
