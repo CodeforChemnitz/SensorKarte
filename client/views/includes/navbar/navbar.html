@@ -1,6 +1,7 @@
 <template name="navbar">
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
+
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -10,23 +11,40 @@
           </button>
           <a class="navbar-brand" href="#">Sensor Karte</a>
         </div>
+
+
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="{{pathFor 'map'}}">Karte</a></li>
-            <li><a href="{{pathFor 'list'}}">Liste</a></li>
-          </ul>
-          <div class="navbar-right">
-            {{> loginButtons}}
-          </div>
+              <ul class="nav navbar-nav">
+                  <li><a href="{{pathFor 'map'}}"><i class="fa fa-map-marker"></i> Karte</a></li>
+                  <li><a href="{{pathFor 'list'}}"><i class="fa fa-list"></i> Liste</a></li>
+              </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+              {{#if currentUser}}
+                <li>
+                  <a href="/sign-out">
+                    <i class="fa fa-sign-in"></i> {{emailLocalPart}} Ausloggen
+                  </a>
+                </li>
+              {{else}}
+                <li>
+                  <a href="/sign-in">
+                    <i class="fa fa-sign-out"></i> Einloggen
+                  </a>
+                </li>
+              {{/if}}
+            </ul>
+
           <form class="navbar-form navbar-right search">
             <input type="text" class="form-control filter-name" placeholder="Suchen...">
             <select class="form-control filter-type">
-                {{#each types}}
-                    <option value="{{_id}}">{{name}}</option>
+                {{#each sensortypes}}
+                    <option value="{{key}}">{{name}}</option>
                 {{/each}}
             </select>
           </form>
-        </div>
-      </div>
+
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
     </nav>
 </template>

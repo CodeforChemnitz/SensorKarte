@@ -1,6 +1,17 @@
+
+# TODO wie subscribed man in einen Layout inkludierten Template einer Collection?
+
+#Template.navbar.render ->
+#    allSubsManager.subscribe "allSensortypes"
+
+
 Template.navbar.helpers
-    types: () -> Sensortypes.find().fetch()
-    emailLocalPart: () ->
+    sensortypes: ->
+        bla = Sensortypes.find() # 0 gefunden
+        #console.log(bla)
+        bla
+
+    emailLocalPart: ->
         email = Meteor.user().emails[0].address
         email.substring 0, email.indexOf('@')
 
