@@ -23,23 +23,41 @@ We use OSM.DE-style, but we can even use `Stamen.Watercolor` or `Thunderforest.O
 
 Place a marker to show our current location (reactive) by using [Tracker](https://www.meteor.com/tracker).
 
-        yourloc = {}
+        ownLocMarker = false
+        firstFixFound = false
+
         Tracker.autorun (c) ->
             curr = Geolocation.latLng()  # reactive! rerun if it changes
+
             if c.firstRun
-                curr = { lat: 50.8323, lng: 12.9282 } if !curr    # Chemnitz
+                if !curr
+                    curr = { lat: 50.8323, lng: 12.9282 }     # Chemnitz Fallback
 
                 icon = L.AwesomeMarkers.icon
-                    icon: 'coffee',
+                    icon: 'plus'
                     markerColor: 'red'
 
-                #console.log "icon", icon;
-                yourloc = L.marker curr, { icon: icon}
+                ownLocMarker = L.marker curr, { icon: icon}
+                    .addTo map
+                    .on 'click', clickOnMyOwnLocation
 
-            else if curr
-                yourloc.lat = curr.lat;
-                yourloc.lng = curr.lng;
                 map.setView [curr.lat, curr.lng], 13
+
+If we move, change the own marker.
+
+        Tracker.autorun (c) ->
+            return if !ownLocMarker
+            curr = Geolocation.latLng()
+            return if !curr
+            ownLocMarker.setLatLng curr
+            console.log("update ownLocMarker", curr.lat, curr.lng, ownLocMarker)
+
+Only move the map to our position for the first fixture
+
+            if !firstFixFound
+                map.setView [curr.lat, curr.lng], 13
+                firstFixFound = true
+
 
 On double-click on the map we create a new marker on that location and show a modal dialog for further details.
 
@@ -47,7 +65,7 @@ On double-click on the map we create a new marker on that location and show a mo
             title.set ''
             id.set ''
             latlng.set event.latlng
-            Modal.show 'recordNew' 
+            Modal.show 'recordNew'
 
 Place all the existing sensors (records) on the map and observe for update/change/delete.
 
@@ -60,14 +78,7 @@ Place all the existing sensors (records) on the map and observe for update/chang
 
 On click on the marker show details in a modal dialog.
 
-                    .on 'click', (event) ->
-                        id.set document._id # ReactVar
-                        # latlng.set document.latlng
-                        # title.set document.title?
-                        # type.set document.type?
-                        #map.removeLayer marker
-                        #Markers.remove {_id: document._id}
-                        Modal.show 'markerModal'
+                marker.on 'click', -> clickOnExistingMarker
 
             changed: (oldDocument, newDocument) ->
                 # console.warn "TODO marker onclick finden und ReactVars aktualisieren", oldDocument, newDocument
@@ -87,7 +98,7 @@ Helpers are dedicated view functions and provide all the logic for the actual ht
 
 Track our own position, just for fun and clearness.
 
-       yourloc: () ->
+       yourloc: ->
            geo = Geolocation.latLng();
            if geo
                return math.round(geo.lat, 4) + ' / ' + math.round(geo.lng, 4)
@@ -101,5 +112,19 @@ Every custom interaction of the user with this template is listed below.
     Template.map.events
 
 
+
 ## Event Helpers
 Complex interactions that require more than 1-2 lines of code should be outsourced here.
+
+    clickOnExistingMarker = ->
+        id.set document._id # ReactVar
+        # latlng.set document.latlng
+        # title.set document.title?
+        # type.set document.type?
+        #map.removeLayer marker
+        #Markers.remove {_id: document._id}
+        Modal.show 'markerModal'
+
+    clickOnMyOwnLocation = ->
+
+        Modal.show 'newRecord'

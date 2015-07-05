@@ -46,3 +46,8 @@ The swiss army knife for time manipulation!
         MM: "%d Monaten"
         y:  "einem Jahr"
         yy: "%d Jahren"
+
+## Fontawesome
+For famous icons - especially for map marker!
+
+    L.AwesomeMarkers.Icon.prototype.options.prefix = 'fa';
