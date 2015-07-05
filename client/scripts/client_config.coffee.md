@@ -17,15 +17,16 @@ Responsible for the wait-animation
 A app-like login mask instead of the default dropdown menu from accounts-ui. [Accounts-Entry](https://github.com/Differential/accounts-entry)
 
     Meteor.startup ->
-      AccountsEntry.config
-        # logo: '/img/splash-sm.png'
-        homeRoute: '/'
-        dashboardRoute: '/map'
-        # profileRoute: 'profile'
-        passwordSignupFields: 'EMAIL_ONLY'
-        # showSignupCode: true
-        showOtherLoginServices: false
-        language: 'german'
+    #   AccountsEntry.config
+    #     # logo: '/img/splash-sm.png'
+    #     homeRoute: '/'
+    #     dashboardRoute: '/map'
+    #     # profileRoute: 'profile'
+    #     passwordSignupFields: 'EMAIL_ONLY'
+    #     # showSignupCode: true
+    #     showOtherLoginServices: false
+    #     language: 'german'
+        T9n.setLanguage 'de'
 
 ## Moment js
 The swiss army knife for time manipulation!

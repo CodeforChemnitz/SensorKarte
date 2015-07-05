@@ -37,7 +37,9 @@ peernohell:c3
 # matdutour:progress-button
 
 # user account management
-joshowens:accounts-entry
+#joshowens:accounts-entry # all should be modal!
+ian:accounts-ui-bootstrap-3
+softwarerero:accounts-t9n
 accounts-password
 
 # utility

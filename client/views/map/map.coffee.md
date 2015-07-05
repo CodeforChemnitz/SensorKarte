@@ -47,7 +47,7 @@ On double-click on the map we create a new marker on that location and show a mo
             title.set ''
             id.set ''
             latlng.set event.latlng
-            Modal.show 'markerModal'
+            Modal.show 'recordNew' 
 
 Place all the existing sensors (records) on the map and observe for update/change/delete.
 

@@ -1,10 +1,4 @@
 
-# TODO wie subscribed man in einen Layout inkludierten Template einer Collection?
-
-#Template.navbar.render ->
-#    allSubsManager.subscribe "allSensortypes"
-
-
 Template.navbar.helpers
     sensortypes: ->
         bla = Sensortypes.find() # 0 gefunden

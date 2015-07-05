@@ -31,6 +31,10 @@ allSubsManager = new SubsManager
 #     where: 'client'
 
 
+# Sensortypen immer subscriben
+Meteor.subscribe 'allSensortypes'
+
+
 # http://iron-meteor.github.io/iron-router/#route-parameters
 
 Router.map ->

@@ -20,19 +20,7 @@
               </ul>
 
             <ul class="nav navbar-nav navbar-right">
-              {{#if currentUser}}
-                <li>
-                  <a href="/sign-out">
-                    <i class="fa fa-sign-in"></i> {{emailLocalPart}} Ausloggen
-                  </a>
-                </li>
-              {{else}}
-                <li>
-                  <a href="/sign-in">
-                    <i class="fa fa-sign-out"></i> Einloggen
-                  </a>
-                </li>
-              {{/if}}
+                 {{> loginButtons}}
             </ul>
 
           <form class="navbar-form navbar-right search">
