@@ -6,8 +6,9 @@
         defaultValue: "Point"
 
     coordinates:
-        type: [Object]
+        type: [Number]
+        decimal: true
         autoValue: ->
-            if !@isUpdate
+            if Meteor.isClient && !@isUpdate
                 loc = Geolocation.latLng()
                 [ loc.lat, loc.lng ] if loc

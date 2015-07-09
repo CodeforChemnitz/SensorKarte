@@ -1,7 +1,7 @@
 # Records
 The core data collection of a sensor marker.
 
-    @Records = Records = new Meteor.Collection 'marker'
+    @Records = Records = new Meteor.Collection 'stationen'
 
 ## Data Schema
 
@@ -23,7 +23,9 @@ http://docs.mongodb.org/manual/reference/operator/query/near/
 
         userId:
             type: String
-            autoValue: -> @userId
+            autoValue: ->
+              if Meteor.isClient
+                @userId
 
         createdAt:
             type: Date
@@ -38,11 +40,11 @@ http://docs.mongodb.org/manual/reference/operator/query/near/
             defaultValue: []
 
         location:
-            type @Schemas.geoLocation
+            type: @Schemas.geoLocation
 
         contactData:
             type: @Schemas.contactData
-            defaultvalue: {}
+            #defaultvalue: {}
 
 
 
