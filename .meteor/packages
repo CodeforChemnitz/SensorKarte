@@ -30,10 +30,9 @@ geolocation
 appshore:leaflet-awesome-markers
 
 # design
-#bootstrap  #implied
+#bootstrap  #implicit
 bootswatch:lumen
 pfafman:font-awesome-4
-peernohell:c3
 # matdutour:progress-button
 
 # user account management
@@ -45,3 +44,7 @@ accounts-password
 # utility
 underscorestring:underscore.string
 ecwyne:mathjs
+
+# debugging
+msavin:mongol
+msavin:jetsetter

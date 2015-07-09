@@ -1,10 +1,10 @@
 @Schemas or= {}
 @Schemas.sensorData = new SimpleSchema
 
+    name:
+        type: String
+        label: "Bezeichnung"
+        
     type:
-        type: @Schemas.Geolocation
+        type: @Schemas.sensorTyp
         label: "Sensortyp"
-
-    geoloc:
-        type: @Schemas.Geolocation
-        label: "Geo-Position"

@@ -1,12 +1,13 @@
 @Schemas or= {}
 @Schemas.geoLocation = new SimpleSchema
 
-    lat:
-        type: Number
-        label: "Latitude"
-        autoValue: -> Geolocation.latLng().lat
+    type:
+        type: String
+        defaultValue: "Point"
 
-    long:
-        type: Number
-        label: "Longitute"
-        autoValue: -> Geolocation.latLng().lng
+    coordinates:
+        type: [Object]
+        autoValue: ->
+            if !@isUpdate
+                loc = Geolocation.latLng()
+                [ loc.lat, loc.lng ] if loc

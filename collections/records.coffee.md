@@ -8,6 +8,17 @@ The core data collection of a sensor marker.
 The following Schema is used for documents of the collection. It describes the exact data fields and
 additional metadata for displaying them in HTML forms.
 
+## Story
+
+Ein Nutzer kann kann an einer beliebigen Stelle einen Sensorstandpunkt (Station) erstellen. Dieser trägt auch die Geolocation.
+Eine Station wird dem aktuellen Nutzer zugeordnet, KANN eine Beschreibung haben, KANN einen gesonderten Ansprechpartner haben.
+Zu dieser Station können beliebig viele Sensoren hinterlegt werden, je Typ aber nur 1x.
+Jeder Sensor hat einen Typ.
+
+Die Geolocation soll per MongoDBs `$near` benutzbar sein.
+http://stackoverflow.com/questions/24492333/meteor-simple-schema-for-mongo-geo-location-data
+http://docs.mongodb.org/manual/reference/operator/query/near/
+
     Records.attachSchema new SimpleSchema
 
         userId:
@@ -23,12 +34,17 @@ additional metadata for displaying them in HTML forms.
             autoValue: -> new Date()
 
         sensorData:
-            type: @Schemas.sensorData
-            defaultValue: {}
+            type: [@Schemas.sensorData]
+            defaultValue: []
 
-        # contactData:
-        #     type: @Schemas.contactData
-        #     defaultvalue: {}
+        location:
+            type @Schemas.geoLocation
+
+        contactData:
+            type: @Schemas.contactData
+            defaultvalue: {}
+
+
 
 ## Access Rules
 Instead of heavy Meteor methods, just use lazy access rules to allow CRUD
