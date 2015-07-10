@@ -4,7 +4,6 @@ coffeescript
 less
 reactive-var
 mrt:moment
-#jquery #standard
 
 # collections
 aldeed:collection2
@@ -36,7 +35,6 @@ pfafman:font-awesome-4
 # matdutour:progress-button
 
 # user account management
-#joshowens:accounts-entry # all should be modal!
 ian:accounts-ui-bootstrap-3
 softwarerero:accounts-t9n
 accounts-password
@@ -48,3 +46,14 @@ ecwyne:mathjs
 # debugging
 msavin:mongol
 msavin:jetsetter
+meteorhacks:kadira-debug
+meteorhacks:kadira
+meteorhacks:zones
+meteorhacks:kadira-profiler
+
+# backend
+houston:admin
+
+# testing
+#sanjo:jasmine
+#velocity:html-reporter
