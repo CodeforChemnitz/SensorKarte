@@ -18,7 +18,7 @@ Dieses App hier kümmert sich um die Erfassung und Verwaltung der Stationen und 
 ** http://codeforchemnitz-sensors.meteor.com **
 
 ## Technische Basis
-Meteor: Node.JS, Bootstrap, MongoDB, [Leaflet](https://github.com/bevanhunt/meteor-leaflet)
+Meteor: Node.JS, Bootstrap (Theme: [Bootswatch Lumen](https://bootswatch.com/lumen/)), MongoDB, [Leaflet](https://github.com/bevanhunt/meteor-leaflet), [Fontawesome](http://fortawesome.github.io/Font-Awesome/), [Meteocon](http://www.alessioatzeni.com/meteocons/) (Icons im Logo)
 
 ### Warum Meteor?
 Dinge auf einer Karte eintragen und bearbeiten ist der klassische Fall einer Web-**App**. Durch Meteor als Full-Stack-Framework bleibt praktisch nur noch die Business-Logik übrig. Durch unglaublich viele und gute Pakete können ganze Komponenten wie das Accounting praktisch per Einzeiler integriert werden.
