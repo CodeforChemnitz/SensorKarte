@@ -34,15 +34,22 @@ Die Meteor-Plattform macht das mitwirken sehr einfach:
 1. `git clone https://github.com/codeforchemnitz/sensor-karte`
 2. `cd sensor-karte`
 3. `meteor run`
-4. Browser öffnen: http://localhost:3000
+4. Browser öffnen: [localhost:3000](http://localhost:3000)
 
 
 ## TODOs
 
 **Offen:**
-
+- eigene Sensortypen für Bodentemperatur, Wassertemperatur, Lufttemperatur
+- Station und Sensoren mit einfachen Keys identifizieren
+  - (stations.key: {unique:true}, stations.sensors.key: {unique:true})
+  - recordShow: Liste Sensor-Key ist zusammengesetzt?
+- Sensordaten in neue Collection + visualisieren
 - Accounts: Name + Vorname als Pflichtfeld -> Verwendung zum Vorausfüllen bei Stations-Anlage
-- Filtern/Suchen: nach Suchbegriff, nach Sensortyp, per Umkreissuche (neben bestehenden Filtern) -> 100m, 1km, 10km, 100km
+- Filtern/Suchen:
+  - nach Suchbegriff,
+  - nach Sensortyp,
+  - per Umkreissuche (neben bestehenden Filtern) -> 100m, 1km, 10km, 100km
 
 **Erledigt:**
 
