@@ -1,7 +1,7 @@
 # Records
-The core data collection of a sensor marker.
+The core data collection of a sensor station.
 
-    @Records = Records = new Meteor.Collection 'stationen'
+    @Records = Records = new Meteor.Collection 'stations'
 
 ## Data Schema
 

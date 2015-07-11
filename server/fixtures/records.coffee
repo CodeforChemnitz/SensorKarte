@@ -7,7 +7,7 @@ Meteor.startup ->
 
     # schema testing: insert a point
 
-    if Records.find().count() == 0
+    if Records.find().count() == 0 and Sensortypes.find().count() > 0
         Records.insert
           userId: 'aaaa'
           createdAt: new Date()
