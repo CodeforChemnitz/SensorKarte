@@ -4,9 +4,7 @@
     owner:
         type: String
         label: "Eigentümer"
-        #optional: true
-        autoform:
-            value: -> Meteor.user().emails[0].address
+        defaultValue: -> Meteor.user().emails[0].address
 
     contact:
         type: String
@@ -17,5 +15,4 @@
     license:
         type: String
         label: "Lizenz"
-        autoform:
-            value: "CC-0"
+        defaultValue: -> "CC-0"

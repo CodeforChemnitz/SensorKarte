@@ -19,10 +19,10 @@ meteorhacks:subs-manager
 fastclick
 sacha:spin
 meteorhacks:fast-render
-aldeed:autoform
+aldeed:autoform             # https://github.com/aldeed/meteor-autoform
 raix:handlebar-helpers
-peppelg:bootstrap-3-modal
-bojicas:bootstrap-alerts
+peppelg:bootstrap-3-modal   # https://github.com/PeppeL-G/bootstrap-3-modal
+bojicas:bootstrap-alerts    # https://github.com/aldeed/meteor-delete-button
 
 # maps & geolocation
 bevanhunt:leaflet

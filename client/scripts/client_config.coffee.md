@@ -56,4 +56,4 @@ For famous icons - especially for map marker!
 We use [Bootstrap Alerts](https://github.com/asktomsk/bootstrap-alerts) with autoHide
 
 
-    Alerts.defaultOptions.autoHide = true
+    # Alerts.defaultOptions.autoHide = true

@@ -88,7 +88,7 @@ On click on the marker show details in a modal dialog.
 If someone removes a sensor it will be removed instantly from the map.
 
             removed: (oldDocument) ->
-                for val in map._layers
+                for id, val of map._layers
                     if val._id == oldDocument._id
                         map.removeLayer val
 
@@ -123,10 +123,9 @@ Complex interactions that require more than 1-2 lines of code should be outsourc
             return
 
         Session.set 'latlng', e.latlng
-        Modal.show 'recordNew',
+        Modal.show 'recordNew'
 
     clickOnExistingMarker = (document) ->
-        console.log document._id, Records.findOne(document._id)
         Modal.show 'recordEdit', Records.findOne(document._id)
 
     clickOnMyOwnLocation = ->

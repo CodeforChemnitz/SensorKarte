@@ -5,11 +5,11 @@
 AutoForm.addHooks 'insertRecordForm',
 
     onError: (formType, error) ->
-        console.log "error", formType, error
+        # console.log "error", formType, error
         Alerts.set('Fehler beim Anlegen')
 
     onSuccess: (formType, result) ->
-        console.log "success", formType, result
+        # console.log "success", formType, result
         Alerts.set('Station erfolgreich angelegt', 'success')
         Modal.hide 'recordNew'
 
@@ -24,4 +24,4 @@ AutoForm.addHooks 'insertRecordForm',
             this.result doc
 
 
-AutoForm.debug
+AutoForm.debug()

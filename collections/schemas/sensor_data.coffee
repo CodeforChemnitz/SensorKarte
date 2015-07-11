@@ -21,6 +21,8 @@
 
         autoform:
           type: "select"
+          afFieldInput:
+            firstOption: "(Bitte einen Typ wählen)"
           options: ->
               Sensortypes.find {},{key:1,name:1,_id:0}
                 .map (n) ->

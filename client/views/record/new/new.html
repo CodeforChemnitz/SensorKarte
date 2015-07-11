@@ -9,10 +9,6 @@
                 </div>
 
                 <div class="modal-body">
-                    {{!-- > afQuickField name='name' autofocus=''}}
-                    {{> afQuickField name='description' rows='5'}}
-                    {{> afQuickField name='sensorData' rows='5' --}}
-
                     {{#each afFieldNames}}
                         {{> afQuickField name=this.name options=afOptionsFromSchema}}
                     {{/each}}

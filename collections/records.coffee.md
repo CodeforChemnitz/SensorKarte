@@ -75,7 +75,7 @@ something "hacky" here, thus this approach is secure.
       insert: (userId, doc) ->
         return !!userId
 
-      update: (userId, docs, fields, modifier) ->
+      update: (userId, doc, fields, modifier) ->
         return userId is doc.userId
 
       remove: (userId, doc) ->

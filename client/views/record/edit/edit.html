@@ -2,21 +2,24 @@
     <div class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                {{#autoForm collection="Records" id="editRecordForm" type="update" doc=this autosave=true}}
+                {{!-- > quickRemoveButton collection="Records" _id=this._id class="btn btn-danger" --}}
+
+                {{#autoForm collection="Records" id="editRecordForm" type="update" doc=this}}
 
                 <div class="modal-header">
                     <h4 class="modal-title">Station bearbeiten</h4>
                 </div>
 
                 <div class="modal-body">
-                    {{> afQuickField name='name'}}
-                    {{> afQuickField name='description'}}
-                    {{!-- > afQuickField name='sensorData' --}}
+                    {{#each afFieldNames}}
+                        {{> afQuickField name=this.name options=afOptionsFromSchema}}
+                    {{/each}}
                 </div>
 
                 <div class="modal-footer">
-                    {{!--<button type="submit" class="btn btn-primary">Speichern</button>--}}
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Speichern &amp; Schließen</button>
+                    <button type="button" class="btn btn-danger pull-left record-delete">Löschen</button>
+                    <button type="submit" class="btn btn-primary">Speichern</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
                 </div>
                 {{/autoForm}}
             </div>
