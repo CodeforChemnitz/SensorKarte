@@ -72,7 +72,12 @@ Place all the existing sensors (records) on the map and observe for update/chang
             added: (document) ->
                 if document.location?.coordinates?
                     geoloc = {lat: document.location.coordinates[0], lng: document.location.coordinates[1]}
-                    marker = L.marker geoloc
+
+                    icon = L.AwesomeMarkers.icon
+                        icon: 'rss'
+                        markerColor: if document.userId == Meteor.user()._id then 'green' else 'blue'
+
+                    marker = L.marker geoloc, {icon: icon}
                         .addTo map
                     marker._id = document._id
 
@@ -126,7 +131,7 @@ Complex interactions that require more than 1-2 lines of code should be outsourc
         Modal.show 'recordNew'
 
     clickOnExistingMarker = (document) ->
-        Modal.show 'recordEdit', Records.findOne(document._id)
+        Modal.show 'recordShow', Records.findOne(document._id)
 
     clickOnMyOwnLocation = ->
         if !Meteor.user()

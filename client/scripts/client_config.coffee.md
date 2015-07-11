@@ -53,7 +53,14 @@ For famous icons - especially for map marker!
     L.AwesomeMarkers.Icon.prototype.options.prefix = 'fa';
 
 ## Alerts
-We use [Bootstrap Alerts](https://github.com/asktomsk/bootstrap-alerts) with autoHide
-
+We use [Bootstrap Alerts](https://github.com/asktomsk/bootstrap-alerts) with autoHide.
+Poorly it's not configurable, but hey, the default behaviour is good!
 
     # Alerts.defaultOptions.autoHide = true
+
+## Modals
+Idea: Allow multiple modals, e.g. for recordEdit within recordShow.
+Well Bootstrap don't support it, so there are side effects like not scrollabe modals.
+So we don't use it. We close one modal and open the other by the hidden.bs.modal event.
+
+    # Modal.allowMultiple = true

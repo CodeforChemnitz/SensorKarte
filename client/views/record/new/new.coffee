@@ -24,4 +24,4 @@ AutoForm.addHooks 'insertRecordForm',
             this.result doc
 
 
-AutoForm.debug()
+# AutoForm.debug()

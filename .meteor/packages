@@ -27,7 +27,7 @@ bojicas:bootstrap-alerts    # https://github.com/aldeed/meteor-delete-button
 # maps & geolocation
 bevanhunt:leaflet
 geolocation
-appshore:leaflet-awesome-markers
+appshore:leaflet-awesome-markers    # https://github.com/lvoogdt/Leaflet.awesome-markers
 
 # design
 bootswatch:lumen

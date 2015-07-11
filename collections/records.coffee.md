@@ -35,6 +35,11 @@ Jeder Sensor hat einen Typ.
             autoform:
                 omit: true
 
+        name:
+            type: String
+            autoform:
+                placeholder: "z.B. Vogelhaus"
+
         sensorData:
             type: [@Schemas.sensorData]
             defaultValue: []

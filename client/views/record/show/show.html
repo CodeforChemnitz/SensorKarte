@@ -1,0 +1,45 @@
+<template name="recordShow">
+    <div class="modal fade recordShow">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Station: <strong>{{#if name}}{{name}}{{else}}{{_id}}{{/if}}</strong></h4>
+                </div>
+
+                <div class="modal-body">
+                    <table class="table">
+                        <thead><tr><th>Bezeichnung</th><th>Sensortyp</th><th>ID</th></tr></thead>
+                        <tbody>
+                        {{#each sensorData}}
+                            <tr><td>{{name}}</td><td>{{type}}</td><td>{{_id}}</td></tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+
+                    {{#with contactData}}
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h3>Kontaktdaten</h3>
+                                {{#if owner}}<p><strong>Eigentümer:</strong> {{owner}}</p>{{/if}}
+                                {{#if contact}}<p><strong>Ansprechpartner:</strong> {{contact}}</p>{{/if}}
+                            </div>
+                            <div class="col-sm-6">
+                                <h3>Lizenz</h3>
+                                <p><strong>Lizenz:</strong> {{license}}</p>
+                            </div>
+                        </div>
+                    {{/with}}
+
+                </div>
+
+                <div class="modal-footer">
+                    {{#if canEdit}}
+                        <button type="button" class="btn btn-primary record-edit">Bearbeiten</button>
+                        <button type="button" class="btn btn-danger pull-left record-delete">Löschen</button>
+                    {{/if}}
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,9 +1,7 @@
 <template name="recordEdit">
-    <div class="modal fade">
+    <div class="modal fade recordEdit">
         <div class="modal-dialog">
             <div class="modal-content">
-                {{!-- > quickRemoveButton collection="Records" _id=this._id class="btn btn-danger" --}}
-
                 {{#autoForm collection="Records" id="editRecordForm" type="update" doc=this}}
 
                 <div class="modal-header">
@@ -17,7 +15,6 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger pull-left record-delete">Löschen</button>
                     <button type="submit" class="btn btn-primary">Speichern</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
                 </div>
