@@ -22,6 +22,7 @@ meteorhacks:fast-render
 aldeed:autoform
 raix:handlebar-helpers
 peppelg:bootstrap-3-modal
+bojicas:bootstrap-alerts
 
 # maps & geolocation
 bevanhunt:leaflet
@@ -29,7 +30,6 @@ geolocation
 appshore:leaflet-awesome-markers
 
 # design
-#bootstrap  #implicit
 bootswatch:lumen
 pfafman:font-awesome-4
 # matdutour:progress-button

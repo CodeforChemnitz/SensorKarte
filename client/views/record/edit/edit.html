@@ -1,0 +1,25 @@
+<template name="recordEdit">
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                {{#autoForm collection="Records" id="editRecordForm" type="update" doc=this autosave=true}}
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Station bearbeiten</h4>
+                </div>
+
+                <div class="modal-body">
+                    {{> afQuickField name='name'}}
+                    {{> afQuickField name='description'}}
+                    {{!-- > afQuickField name='sensorData' --}}
+                </div>
+
+                <div class="modal-footer">
+                    {{!--<button type="submit" class="btn btn-primary">Speichern</button>--}}
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Speichern &amp; Schließen</button>
+                </div>
+                {{/autoForm}}
+            </div>
+        </div>
+    </div>
+</template>

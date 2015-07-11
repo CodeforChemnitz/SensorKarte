@@ -1,0 +1,29 @@
+<template name="recordNew">
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                {{#autoForm collection="Records" id="insertRecordForm" type="insert"}}
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Neue Station</h4>
+                </div>
+
+                <div class="modal-body">
+                    {{!-- > afQuickField name='name' autofocus=''}}
+                    {{> afQuickField name='description' rows='5'}}
+                    {{> afQuickField name='sensorData' rows='5' --}}
+
+                    {{#each afFieldNames}}
+                        {{> afQuickField name=this.name options=afOptionsFromSchema}}
+                    {{/each}}
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Anlegen</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+                </div>
+                {{/autoForm}}
+            </div>
+        </div>
+    </div>
+</template>

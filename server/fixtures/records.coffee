@@ -1,20 +1,11 @@
 # if the database is empty on server start, create some sample data.
 Meteor.startup ->
-    if Sensortypes.find().count() == 0
-        data =
-            air_humidity: "Luftfeuchtigkeit"
-            temperature: "Temperatur"
-            wind_speed: "Windgeschwindigkeit"
-            wind_direction: "Windrichtung"
 
-        _.each _.keys(data), (key) ->
-            Sensortypes.insert {key: key, name: data[key]}
+    # for debugging purposes
+    #Records.remove({});
 
 
-
-    # for debugging purposes / schema testing: insert a point
-
-    Records.remove({});
+    # schema testing: insert a point
 
     if Records.find().count() == 0
         Records.insert

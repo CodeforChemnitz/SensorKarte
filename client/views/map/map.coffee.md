@@ -1,4 +1,4 @@
-# Dashboard View Controller
+# Map View Controller
 
 ## local Variables
 Local application state and other variables dedicated to this view, also custom pure functions.
@@ -24,7 +24,7 @@ We use OSM.DE-style, but we can even use `Stamen.Watercolor` or `Thunderforest.O
 Place a marker to show our current location (reactive) by using [Tracker](https://www.meteor.com/tracker).
 
         ownLocMarker = false
-        firstFixFound = false
+        Session.set 'firstFixFound', false
 
         Tracker.autorun (c) ->
             curr = Geolocation.latLng()  # reactive! rerun if it changes
@@ -50,35 +50,35 @@ If we move, change the own marker.
             curr = Geolocation.latLng()
             return if !curr
             ownLocMarker.setLatLng curr
-            console.log("update ownLocMarker", curr.lat, curr.lng, ownLocMarker)
+            #console.log("update ownLocMarker", curr.lat, curr.lng, ownLocMarker)
 
 Only move the map to our position for the first fixture
 
-            if !firstFixFound
+            if ! Session.get 'firstFixFound'
                 map.setView [curr.lat, curr.lng], 13
-                firstFixFound = true
+                Alerts.set('Position gefunden!', 'success')
+                Session.set 'firstFixFound', true
 
 
 On double-click on the map we create a new marker on that location and show a modal dialog for further details.
 
-        map.on 'dblclick', (event) ->
-            title.set ''
-            id.set ''
-            latlng.set event.latlng
-            Modal.show 'recordNew'
+        map.on 'dblclick', (event) -> dblclickOnMap event
+
 
 Place all the existing sensors (records) on the map and observe for update/change/delete.
 
         query = Records.find()
         query.observe
             added: (document) ->
-                marker = L.marker document.sensorData.geoloc
-                    .addTo map
-                marker._id = document._id
+                if document.location?.coordinates?
+                    geoloc = {lat: document.location.coordinates[0], lng: document.location.coordinates[1]}
+                    marker = L.marker geoloc
+                        .addTo map
+                    marker._id = document._id
 
 On click on the marker show details in a modal dialog.
 
-                marker.on 'click', -> clickOnExistingMarker
+                    marker.on 'click', -> clickOnExistingMarker document
 
             changed: (oldDocument, newDocument) ->
                 # console.warn "TODO marker onclick finden und ReactVars aktualisieren", oldDocument, newDocument
@@ -88,7 +88,9 @@ On click on the marker show details in a modal dialog.
 If someone removes a sensor it will be removed instantly from the map.
 
             removed: (oldDocument) ->
-                map.removeLayer val for val in map._layers if val._id == oldDocument._id
+                for val in map._layers
+                    if val._id == oldDocument._id
+                        map.removeLayer val
 
 
 ## Helpers
@@ -109,22 +111,32 @@ Track our own position, just for fun and clearness.
 ## Events
 Every custom interaction of the user with this template is listed below.
 
-    Template.map.events
-
+    # Template.map.events
 
 
 ## Event Helpers
 Complex interactions that require more than 1-2 lines of code should be outsourced here.
 
-    clickOnExistingMarker = ->
-        id.set document._id # ReactVar
-        # latlng.set document.latlng
-        # title.set document.title?
-        # type.set document.type?
-        #map.removeLayer marker
-        #Markers.remove {_id: document._id}
-        Modal.show 'markerModal'
+    dblclickOnMap = (e) ->
+        if !Meteor.user()
+            Alerts.set('Bitte anmelden', 'warning')
+            return
+
+        Session.set 'latlng', e.latlng
+        Modal.show 'recordNew',
+
+    clickOnExistingMarker = (document) ->
+        console.log document._id, Records.findOne(document._id)
+        Modal.show 'recordEdit', Records.findOne(document._id)
 
     clickOnMyOwnLocation = ->
+        if !Meteor.user()
+            Alerts.set('Bitte anmelden', 'warning')
+            return
 
-        Modal.show 'newRecord'
+        if !Session.get 'firstFixFound'
+            Alerts.set("Bitte warten bis aktuelle Position gefunden wurde.", 'warning')
+            return
+
+        Session.set 'latlng', Geolocation.latLng()
+        Modal.show 'recordNew'

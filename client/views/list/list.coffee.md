@@ -19,7 +19,9 @@ Helpers are dedicated view functions and provide all the logic for the actual ht
 Every custom interaction of the user with this template is listed below.
 
     Template.list.events
-      'click .record-delete': (e,t)-> Records.remove _id: @_id if confirm "Wirklich löschen?"
+      'click .record-delete': -> Records.remove _id: @_id if confirm "Wirklich löschen?"
+      'click .action-edit': -> Modal.show 'recordEdit', this
+      'click .action-new': -> Modal.show 'recordNew'
 
 
 ## Event Helpers

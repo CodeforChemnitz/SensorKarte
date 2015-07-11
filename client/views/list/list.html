@@ -1,3 +1,16 @@
 <template name="list">
-    Liste
+
+    <table class="table">
+        <thead>
+            <tr><th>Name</th><th>Beschreibung</th><th></th></tr>
+        </thead>
+        <tbody>
+            {{#each allRecords}}
+            <tr><td>{{name}}</td><td>{{description}}</td>
+                <td><button class="btn btn-default action-edit">Bearbeiten</button></td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <button type="button" class="pull-left btn btn-lg btn-primary action-new">Neuer Eintrag</button>
 </template>

@@ -4,6 +4,8 @@
     _id:
         type: String
         autoValue: -> Meteor.uuid()
+        autoform:
+            omit: true
 
     name:
         type: String
@@ -11,6 +13,16 @@
 
     type:
         type: String
-        # validate against @Schemas.sensorType.key
-        allowedValues: ['air_humidity','temperature','wind_speed','wind_direction'] # Sensortyp.find({$fields: 'key'}).fetch()
         label: "Sensortyp"
+
+        allowedValues: ->
+            Sensortypes.find {}, {key:1,_id:0}
+                .map (n) -> n.key
+
+        autoform:
+          type: "select"
+          options: ->
+              Sensortypes.find {},{key:1,name:1,_id:0}
+                .map (n) ->
+                    value: n.key
+                    label: n.name

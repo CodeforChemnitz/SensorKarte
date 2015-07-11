@@ -51,3 +51,9 @@ The swiss army knife for time manipulation!
 For famous icons - especially for map marker!
 
     L.AwesomeMarkers.Icon.prototype.options.prefix = 'fa';
+
+## Alerts
+We use [Bootstrap Alerts](https://github.com/asktomsk/bootstrap-alerts) with autoHide
+
+
+    Alerts.defaultOptions.autoHide = true

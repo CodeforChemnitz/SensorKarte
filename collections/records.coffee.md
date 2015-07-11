@@ -15,36 +15,53 @@ Eine Station wird dem aktuellen Nutzer zugeordnet, KANN eine Beschreibung haben,
 Zu dieser Station können beliebig viele Sensoren hinterlegt werden, je Typ aber nur 1x.
 Jeder Sensor hat einen Typ.
 
-Die Geolocation soll per MongoDBs `$near` benutzbar sein.
-http://stackoverflow.com/questions/24492333/meteor-simple-schema-for-mongo-geo-location-data
-http://docs.mongodb.org/manual/reference/operator/query/near/
-
     Records.attachSchema new SimpleSchema
 
         userId:
             type: String
-            autoValue: ->
-              if Meteor.isClient
-                @userId
+            autoValue: -> @userId if @userId
+            autoform:
+                omit: true
 
         createdAt:
             type: Date
             defaultValue: new Date()
+            autoform:
+                omit: true
 
         updatedAt:
             type: Date
             autoValue: -> new Date()
+            autoform:
+                omit: true
 
         sensorData:
             type: [@Schemas.sensorData]
             defaultValue: []
+            label: "Sensoren"
 
         location:
+            # type: Object
             type: @Schemas.geoLocation
+            autoform:
+                # label: false
+                omit: true
+            # autoValue: ->
+                # if Meteor.isClient and !@isUpdate
+                #     loc = Session.get 'latlng'
+                #     if !loc
+                #         console.log "keine loc?", loc
+                #         return {}
+                #     #    throw new Meteor.Error('geoloc', "No geolocation found, so no insert allowed")
+                #     return {type: 'Point', coordinates: [loc.lat, loc.lng]}
+                # console.log "hier? wieso?", Meteor.isClient, !@isUpdate, @
+                # return {}
+
 
         contactData:
             type: @Schemas.contactData
             #defaultvalue: {}
+            label: "Kontaktdaten"
 
 
 
@@ -59,7 +76,7 @@ something "hacky" here, thus this approach is secure.
         return !!userId
 
       update: (userId, docs, fields, modifier) ->
-        return !!userId
+        return userId is doc.userId
 
       remove: (userId, doc) ->
         return userId is doc.userId
