@@ -1,6 +1,8 @@
 # Sensorkarte
 ![App-Logo](https://rawgit.com/CodeForChemnitz/sensor-karte/master/public/img/App_logo.svg)
 
+**[codefor-sensors.meteor.com](http://codefor-sensors.meteor.com)**
+
 ![Screenshot](sensor-karte-screenshot.jpg)
 
 ein ![Code-for-Logo](https://rawgit.com/CodeForChemnitz/sensor-karte/master/public/img/CFG_logo.svg) Projekt
@@ -14,8 +16,6 @@ Alle Ideen und Gedanken finden sich im [Citizen-Science-Wiki](https://github.com
 
 ## Ziel dieser App
 Dieses App hier kümmert sich um die Erfassung und Verwaltung der Stationen und deren Sensoren.
-
-** http://codeforchemnitz-sensors.meteor.com **
 
 ## Technische Basis
 Meteor: Node.JS, Bootstrap (Theme: [Bootswatch Lumen](https://bootswatch.com/lumen/)), MongoDB, [Leaflet](https://github.com/bevanhunt/meteor-leaflet), [Fontawesome](http://fortawesome.github.io/Font-Awesome/), [Meteocon](http://www.alessioatzeni.com/meteocons/) (Icons im Logo)
@@ -92,13 +92,17 @@ Hier gehts zur [Anleitung zum Installieren/Einrichten](https://meteorhacks.com/d
 Getested mit Webkit, Firefox, IE9, iPhone, und iPad
 
 ## Deployment
-Derzeit erfolgt das Deployment noch auf die Meteor-Plattform und ist unter http://codeforchemnitz-sensors.meteor.com erreichbar.
+Derzeit erfolgt das Deployment noch auf die Meteor-Plattform und ist unter http://codefor-sensors.meteor.com erreichbar.
 
-Die Aktualisierung erfolgt durch:
+Die Aktualisierung erfolgt durch: (an meinen Meteor-Account gekoppelt)
 
-`meteor deploy codeforchemnitz-sensors`
+`meteor deploy codefor-sensors`
 
-Für den Produktivmodus soll die App auf dem Codefor-Server gehostet werden.
+Logs anschauen
+
+`meteor logs codefor-sensors.meteor.com`
+
+Für den Produktivmodus soll die App auf dem Codefor-Server gehostet werden. Oder einen PaaS-Anbieter (DigitalOcean, Heroku)
 
 Alternativ findet sich ein PaaS-Spender für die App (Galaxy ist ja gerade noch in der Entwicklung und auf der [Meteor Roadmap](https://trello.com/b/hjBDflxp/meteor-roadmap))
 
