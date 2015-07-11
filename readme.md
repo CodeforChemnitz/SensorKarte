@@ -1,7 +1,7 @@
 # Sensorkarte
-![App-Logo](public/img/App_logo.svg)
+![App-Logo](https://rawgit.com/CodeForChemnitz/sensor-karte/master/public/img/App_logo.svg)
 
-ein ![Code-for-Logo](public/img/CFG_logo.svg) Projekt
+ein ![Code-for-Logo](https://rawgit.com/CodeForChemnitz/sensor-karte/master/public/img/CFG_logo.svg) Projekt
 
 Im Rahmen der Citizen-Science hat sich das OK Lab Chemnitz zum Ziel gesetzt
 eine Plattform zu entwickeln, die zum einen die Erfassung und Verwaltung von Messstation und deren einzelner Sensoren ermöglichen soll.
