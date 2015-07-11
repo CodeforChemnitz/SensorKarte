@@ -15,15 +15,59 @@ Dieses App hier kümmert sich um die Erfassung und Verwaltung der Stationen und 
 ** http://codeforchemnitz-sensors.meteor.com **
 
 ## Technische Basis
-Meteor: Node.JS, Bootstrap, MongoDB.
+Meteor: Node.JS, Bootstrap, MongoDB, [Leaflet](https://github.com/bevanhunt/meteor-leaflet)
+
+### Warum Meteor?
+Dinge auf einer Karte eintragen und bearbeiten ist der klassische Fall einer Web-**App**. Durch Meteor als Full-Stack-Framework bleibt praktisch nur noch die Business-Logik übrig. Durch unglaublich viele und gute Pakete können ganze Komponenten wie das Accounting praktisch per Einzeiler integriert werden.
+
+
+> Meteor is a platform built on top of Node.js for building real-time web apps. It's what sits between your app's database and its user interface and makes sure that both are kept in sync.
+https://book.discovermeteor.com/chapter/introduction
+
+Spannend für dieses Projekt: Via SimpleSchema, Minimongo und AutoForm hat man ein selbstabgleichendes und selbstvalidierendes Datenmodell in einer Dokumenten basierenden Datenbank
+
+[zur Paketliste](.meteor/packages)
 
 ## Mitwirken
 Die Meteor-Plattform macht das mitwirken sehr einfach:
 
-1. git clone https://github.com/codeforchemnitz/sensor-karte
-2. cd sensor-karte
-3. meteor
+1. `git clone https://github.com/codeforchemnitz/sensor-karte`
+2. `cd sensor-karte`
+3. `meteor run`
 4. Browser öffnen: http://localhost:3000
+
+
+## TODOs
+
+**Offen:**
+
+- Accounts: Name + Vorname als Pflichtfeld -> Verwendung zum Vorausfüllen bei Stations-Anlage
+- Filtern/Suchen: nach Suchbegriff, nach Sensortyp, per Umkreissuche (neben bestehenden Filtern) -> 100m, 1km, 10km, 100km
+
+**Erledigt:**
+
+- Station hinzufügen, ändern, löschen
+- Account-Management (erstmal nur Email + Pwd)
+- Leaflet-Karte als zentrales Element
+
+
+## Meteor Debugging
+
+### Kadira
+Im Meteor-Umfeld existiert mit [Kadira](https://kadira.io/) ein Remote-Echtzeit-Performance-und-Debugging-Service.
+
+**Einrichtung:**
+- Anmelden bei https://kadira.io/
+- `server/kadira.js.dist` umbenennen nach server/kadira.js` und Credentials eintragen
+- Meteor starten
+- [Kadira Webfrontend](https://ui.kadira.io/) öffnen
+
+### DDP Verkehr monitoren
+Im Meteor-Framework werden alle Daten zwischen Client und Server via [*Distributed Data Protocol*](https://www.meteor.com/ddp) (DDP) ausgetauscht.
+
+Mit dem `ddp-analyzer` als Proxy kann der Traffic mitverfolgt werden. Das ist ungemein praktisch um herauszufinden wo welche Daten abgeglichen oder gelesen werden.
+
+Hier gehts zur [Anleitung zum Installieren/Einrichten](https://meteorhacks.com/discover-meteor-ddp-in-realtime).
 
 ## Kompatiblität
 Getested mit Webkit, Firefox, IE9, iPhone, und iPad

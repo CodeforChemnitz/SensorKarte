@@ -25,7 +25,7 @@ peppelg:bootstrap-3-modal   # https://github.com/PeppeL-G/bootstrap-3-modal
 bojicas:bootstrap-alerts    # https://github.com/aldeed/meteor-delete-button
 
 # maps & geolocation
-bevanhunt:leaflet
+bevanhunt:leaflet           # https://github.com/bevanhunt/meteor-leaflet
 geolocation
 appshore:leaflet-awesome-markers    # https://github.com/lvoogdt/Leaflet.awesome-markers
 
