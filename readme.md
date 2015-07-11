@@ -1,6 +1,8 @@
 # Sensorkarte
 ![App-Logo](https://rawgit.com/CodeForChemnitz/sensor-karte/master/public/img/App_logo.svg)
 
+![Screenshot](sensor-karte-screenshot.jpg)
+
 ein ![Code-for-Logo](https://rawgit.com/CodeForChemnitz/sensor-karte/master/public/img/CFG_logo.svg) Projekt
 
 Im Rahmen der Citizen-Science hat sich das OK Lab Chemnitz zum Ziel gesetzt
@@ -64,7 +66,7 @@ Die Meteor-Plattform macht das mitwirken sehr einfach:
 Im Meteor-Umfeld existiert mit [Kadira](https://kadira.io/) ein Remote-Echtzeit-Performance-und-Debugging-Service.
 
 **Einrichtung:**
-- Anmelden bei https://kadira.io/
+- Anmelden bei [kadira.io](https://kadira.io/)
 - `server/kadira.js.dist` umbenennen nach server/kadira.js` und Credentials eintragen
 - Meteor starten
 - [Kadira Webfrontend](https://ui.kadira.io/) öffnen
@@ -75,6 +77,15 @@ Im Meteor-Framework werden alle Daten zwischen Client und Server via [*Distribut
 Mit dem `ddp-analyzer` als Proxy kann der Traffic mitverfolgt werden. Das ist ungemein praktisch um herauszufinden wo welche Daten abgeglichen oder gelesen werden.
 
 Hier gehts zur [Anleitung zum Installieren/Einrichten](https://meteorhacks.com/discover-meteor-ddp-in-realtime).
+
+**TL;DR**
+- ggf. Meteor stoppen
+- *.. in zweiten Terminal ..*
+- `sudo npm install -g ddp-analyzer`
+- `ddp-analyzer-proxy` (anderer Tab)
+- *.. wieder im ersten Terminal ..*
+- `export DDP_DEFAULT_CONNECTION_URL=http://localhost:3030`
+- Meteor starten mit `meteor`
 
 ## Kompatiblität
 Getested mit Webkit, Firefox, IE9, iPhone, und iPad
