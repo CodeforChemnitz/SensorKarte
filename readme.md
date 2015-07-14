@@ -43,7 +43,6 @@ Die Meteor-Plattform macht das mitwirken sehr einfach:
 ## TODOs
 
 **Offen:**
-- eigene Sensortypen für Bodentemperatur, Wassertemperatur, Lufttemperatur
 - Station und Sensoren mit einfachen Keys identifizieren
   - (stations.key: {unique:true}, stations.sensors.key: {unique:true})
   - recordShow: Liste Sensor-Key ist zusammengesetzt?
@@ -55,7 +54,8 @@ Die Meteor-Plattform macht das mitwirken sehr einfach:
   - per Umkreissuche (neben bestehenden Filtern) -> 100m, 1km, 10km, 100km
 
 **Erledigt:**
-
+- **Fehler:** Marker auf Retina Geräten anzeigen
+- eigene Sensortypen für Bodentemperatur, Wassertemperatur, Lufttemperatur
 - Station hinzufügen, ändern, löschen
 - Account-Management (erstmal nur Email + Pwd)
 - Leaflet-Karte als zentrales Element

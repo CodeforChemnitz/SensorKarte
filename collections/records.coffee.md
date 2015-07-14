@@ -44,6 +44,7 @@ Jeder Sensor hat einen Typ.
             type: [@Schemas.sensorData]
             defaultValue: []
             label: "Sensoren"
+            minCount: 1
 
         location:
             # type: Object

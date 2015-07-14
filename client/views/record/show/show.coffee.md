@@ -9,7 +9,7 @@ Helpers are dedicated view functions and provide all the logic for the actual ht
 
 If the current user is the creator, more action buttons will appear.
 
-        canEdit: -> Meteor.user()._id == @userId
+        canEdit: -> Meteor.userId() == @userId
         hasContactData: -> @owner or @license
 
 

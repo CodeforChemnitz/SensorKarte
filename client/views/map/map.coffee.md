@@ -75,7 +75,7 @@ Place all the existing sensors (records) on the map and observe for update/chang
 
                     icon = L.AwesomeMarkers.icon
                         icon: 'rss'
-                        markerColor: if !document.userId || document.userId == Meteor.user()._id then 'green' else 'blue'
+                        markerColor: if !document.userId || document.userId == Meteor.userId() then 'green' else 'blue'
 
                     marker = L.marker geoloc, {icon: icon}
                         .addTo map
