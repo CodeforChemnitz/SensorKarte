@@ -43,15 +43,7 @@ Die Meteor-Plattform macht das mitwirken sehr einfach:
 ## TODOs
 
 **Offen:**
-- Station und Sensoren mit einfachen Keys identifizieren
-  - (stations.key: {unique:true}, stations.sensors.key: {unique:true})
-  - recordShow: Liste Sensor-Key ist zusammengesetzt?
-- Sensordaten in neue Collection + visualisieren
-- Accounts: Name + Vorname als Pflichtfeld -> Verwendung zum Vorausfüllen bei Stations-Anlage
-- Filtern/Suchen:
-  - nach Suchbegriff,
-  - nach Sensortyp,
-  - per Umkreissuche (neben bestehenden Filtern) -> 100m, 1km, 10km, 100km
+siehe Issues
 
 **Erledigt:**
 - **Fehler:** Marker auf Retina Geräten anzeigen
