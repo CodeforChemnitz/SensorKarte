@@ -28,6 +28,17 @@ A app-like login mask instead of the default dropdown menu from accounts-ui. [Ac
     #     language: 'german'
         T9n.setLanguage 'de'
 
+## Autoform
+We use [Autoform](https://github.com/aldeed/meteor-autoform) as easy form generator.
+There are different templates: `plain`, `plain-fieldset`, `bootstrap3`, `bootstrap3-inline`, `bootstrap3-horizontal`
+
+    # inline didn't work :()
+    # AutoForm.setDefaultTemplate('bootstrap3-inline');
+    #AutoForm.setDefaultTemplateForType('quickForm', 'plain');
+    #AutoForm.setDefaultTemplateForType('afFormGroup', 'bootstrap3-inline');
+    #AutoForm.setDefaultTemplateForType('afObjectField', 'plain');
+    #AutoForm.setDefaultTemplateForType('afArrayField', 'plain');
+
 ## Moment js
 The swiss army knife for time manipulation!
 

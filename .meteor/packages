@@ -4,6 +4,7 @@ coffeescript
 less
 reactive-var
 mrt:moment
+underscore
 
 # collections
 aldeed:collection2

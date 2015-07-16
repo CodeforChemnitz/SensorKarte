@@ -18,4 +18,5 @@ And we want to search and filter for them, right?
 
         _.each _.keys(data), (key) ->
             if Sensortypes.find({key: key}).count() == 0
+                console.log "add sensortype ", key
                 Sensortypes.insert {key: key, name: data[key]}

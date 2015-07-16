@@ -8,13 +8,17 @@ Meteor.startup ->
     # schema testing: insert a point
 
     if Records.find().count() == 0 and Sensortypes.find().count() > 0
+        console.log "add example record .."
         Records.insert
           userId: 'aaaa'
           createdAt: new Date()
+          name: "Teststation"
           sensorData: [{
+              uuid: 1
               name: "Test"
               type: 'air_humidity'
             }, {
+              uuid: 2
               name: "Test Wind"
               type: 'wind_speed'
             }]
